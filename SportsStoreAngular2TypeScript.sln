@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStoreAngular2TypeScript", "SportsStoreAngular2TypeScript\SportsStoreAngular2TypeScript.csproj", "{E68E7500-AD53-4141-AB4A-13222B4E213B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStoreAngular2TypeScript.Models", "SportsStoreAngular2TypeScript.Models\SportsStoreAngular2TypeScript.Models.csproj", "{7AD0F385-FB83-4084-9823-C7FE3FCEAC67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStoreAngular2TypeScript.Data", "SportsStoreAngular2TypeScript.Data\SportsStoreAngular2TypeScript.Data.csproj", "{73423A7A-16AB-4F9A-9C0C-30D6837E900A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E68E7500-AD53-4141-AB4A-13222B4E213B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E68E7500-AD53-4141-AB4A-13222B4E213B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E68E7500-AD53-4141-AB4A-13222B4E213B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD0F385-FB83-4084-9823-C7FE3FCEAC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD0F385-FB83-4084-9823-C7FE3FCEAC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD0F385-FB83-4084-9823-C7FE3FCEAC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD0F385-FB83-4084-9823-C7FE3FCEAC67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73423A7A-16AB-4F9A-9C0C-30D6837E900A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73423A7A-16AB-4F9A-9C0C-30D6837E900A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73423A7A-16AB-4F9A-9C0C-30D6837E900A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73423A7A-16AB-4F9A-9C0C-30D6837E900A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

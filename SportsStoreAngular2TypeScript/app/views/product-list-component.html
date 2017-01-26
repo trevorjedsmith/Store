@@ -1,0 +1,24 @@
+﻿<!--<div class="well" *ngFor="let product of products | async"> pipe async means lets wait for the promise
+    <h3>
+        <strong>{{product.Name}}</strong>
+        <span class="pull-right label label-primary">
+            {{product.Price | currency}}
+        </span>
+    </h3>
+    <span class="lead">{{product.Description}}</span>
+</div>-->
+
+
+<div class="well" *ngFor="let product of products ">
+    <h3>
+        <strong>{{product.Name}}</strong>
+        <span class="pull-right label label-primary">
+            {{product.Price | currency :'AUD':'true'}}
+        </span>
+    </h3>
+    <button (click)="addProductToCart(product)" class="btn btn-success pull-right">
+        Add To Cart
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    </button>
+    <span class="lead">{{product.Description}}</span>
+</div>

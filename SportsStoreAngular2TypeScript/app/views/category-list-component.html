@@ -1,0 +1,6 @@
+﻿<a (click)="selectCategory()"
+   class="btn btn-block btn-default btn-lg">Home</a>
+<a *ngFor="let category of categories" [ngClass]="getCategoryClass(category)"
+   (click)="selectCategory(category)" class="btn btn-block btn-default btn-lg">
+    {{category}}
+</a>
