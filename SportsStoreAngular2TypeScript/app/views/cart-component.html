@@ -1,0 +1,59 @@
+﻿<div class="well text-center">
+<h2>Your Cart</h2>
+</div>
+
+
+<div class="alert alert-danger" [hidden]="cartData.length > 0">
+    There are no products in your shopping cart.
+    <a [routerLink]="['/sportsstore']" class="alert-link">Click here to return to the catalogue</a>
+</div>
+
+<div [hidden]="cartData.length == 0">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Item</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartData">
+                <td class="text-center">{{item.Count}}</td>
+                <td class="text-center">{{item.Name}}</td>
+                <td class="text-center">{{item.Price | currency : 'AUD': 'true'}}</td>
+                <td class="text-center">{{item.Price * item.Count | currency : 'AUD': 'true'}}</td>
+                <td>
+                    <button (click)="remove(item.Id)" class="btn btn-sm btn-danger">
+                        Remove
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">
+                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                </td>
+                <td class="text-center">
+                    {{total() | currency : 'AUD': 'true'}}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-default" [routerLink]="['/sportsstore']">
+        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+        Continue Shopping
+        </a>
+        <a class="btn btn-default" [routerLink]="['/placeorder']">
+        Place Order Now
+        <span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+        </a>
+    </div>
+</div>
+

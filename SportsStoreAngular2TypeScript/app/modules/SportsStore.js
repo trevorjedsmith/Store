@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var DataService_1 = require("./DataService");
+var router_1 = require("@angular/router");
 var Cart_1 = require("./Cart");
 var SportsStore = (function () {
-    function SportsStore(_dataService, _cart) {
+    function SportsStore(_dataService, _cart, _route) {
         this._dataService = _dataService;
         this._cart = _cart;
+        this._route = _route;
         this.products = [];
     }
     SportsStore.prototype.ngOnInit = function () {
@@ -22,7 +24,6 @@ var SportsStore = (function () {
         this._dataService.getProducts().subscribe(function (data) {
             _this.products = data;
         });
-        //console.log(this.products);
     };
     SportsStore.prototype.addProductToCart = function (product) {
         this._cart.addProduct(product.Id, product.Name, product.Price);
@@ -34,7 +35,7 @@ SportsStore = __decorate([
         selector: 'ss-products',
         templateUrl: 'app/views/product-list-component.html'
     }),
-    __metadata("design:paramtypes", [DataService_1.DataService, Cart_1.Cart])
+    __metadata("design:paramtypes", [DataService_1.DataService, Cart_1.Cart, router_1.ActivatedRoute])
 ], SportsStore);
 exports.SportsStore = SportsStore;
 //# sourceMappingURL=SportsStore.js.map

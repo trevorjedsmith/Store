@@ -17,8 +17,8 @@ export class Cart {
         let addedToExistingItem = false;
 
         for (var i = 0; i < this.cartData.length; i++) {
-            if (this.cartData[i].id == id) {
-                this.cartData[i].count++;
+            if (this.cartData[i].Id == id) {
+                this.cartData[i].Count++;
                 addedToExistingItem = true;
                 break;
             }
@@ -33,7 +33,7 @@ export class Cart {
 
     removeProduct(id: number) {
         for (var i = 0; i < this.cartData.length; i++) {
-            if (this.cartData[i].id == id) {
+            if (this.cartData[i].Id == id) {
                 this.cartData.splice(i, 1);
                 break;
             }

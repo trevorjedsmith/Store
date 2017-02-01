@@ -17,8 +17,8 @@ var Cart = (function () {
     Cart.prototype.addProduct = function (id, name, price) {
         var addedToExistingItem = false;
         for (var i = 0; i < this.cartData.length; i++) {
-            if (this.cartData[i].id == id) {
-                this.cartData[i].count++;
+            if (this.cartData[i].Id == id) {
+                this.cartData[i].Count++;
                 addedToExistingItem = true;
                 break;
             }
@@ -31,7 +31,7 @@ var Cart = (function () {
     };
     Cart.prototype.removeProduct = function (id) {
         for (var i = 0; i < this.cartData.length; i++) {
-            if (this.cartData[i].id == id) {
+            if (this.cartData[i].Id == id) {
                 this.cartData.splice(i, 1);
                 break;
             }

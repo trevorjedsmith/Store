@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\views\cart-component.html" />
     <Content Include="app\views\cartsummary.html" />
     <Content Include="app\views\category-list-component.html" />
     <Content Include="app\views\product-list-component.html" />
@@ -187,11 +188,13 @@
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\modules\Cart.ts" />
     <TypeScriptCompile Include="app\modules\CartSummary.ts" />
+    <TypeScriptCompile Include="app\modules\Checkout.ts" />
     <TypeScriptCompile Include="app\modules\DataService.ts" />
     <TypeScriptCompile Include="app\modules\ICategory.ts" />
     <TypeScriptCompile Include="app\modules\IProduct.ts" />
     <TypeScriptCompile Include="app\modules\SportsStore.ts" />
     <TypeScriptCompile Include="app\modules\SportsStoreCategories.ts" />
+    <TypeScriptCompile Include="app\feature_modules\TestNgFeatureModule.ts" />
     <TypeScriptCompile Include="app\rjxs-operators.ts" />
     <TypeScriptCompile Include="app\rxjs-ops.ts" />
   </ItemGroup>

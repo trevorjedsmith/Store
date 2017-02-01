@@ -10,11 +10,10 @@
 
 <div class="navbar-right">
     <div class="navbar-text">
-        <b>Your cart:</b>
+        <b>Your Cart:</b>
         {{itemCount() }} item(s),
         {{total() | currency : 'AUD': 'true'}}
     </div>
-    <a class="btn btn-default navbar-btn">Checkout
-    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    <a [routerLink]="['/checkout']" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     </a>
 </div>

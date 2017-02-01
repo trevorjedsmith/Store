@@ -6,7 +6,7 @@ import { Cart } from './modules/Cart';
 @Component({
     selector: 'pm-app',
     template: `<div class="navbar navbar-default">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" [routerLink]="['/']">
                 <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
                 {{pageTitle}}
                 </a>
@@ -17,7 +17,7 @@ import { Cart } from './modules/Cart';
                 <ss-categories></ss-categories>
                 </div>
                 <div class="col-xs-8">
-                <ss-products></ss-products>
+                <router-outlet></router-outlet>
                 </div>
                 </div>`,
     providers:[DataService, Cart]
