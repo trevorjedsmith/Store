@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+//import * as $ from 'jquery';
 var DataService = (function () {
     function DataService(_http) {
         this._http = _http;
         this._productsurl = 'http://localhost:53377/api/products';
         this._categoriesurl = 'http://localhost:53377/api/products/categories';
+        this._ordersUrl = 'http://localhost:53377/api/orders';
     }
     DataService.prototype.getProducts = function () {
         return this._http.get(this._productsurl)
@@ -22,6 +24,10 @@ var DataService = (function () {
     };
     DataService.prototype.getCategories = function () {
         return this._http.get(this._categoriesurl)
+            .map(function (response) { return response.json(); });
+    };
+    DataService.prototype.sendOrder = function (order) {
+        return this._http.post(this._ordersUrl, order)
             .map(function (response) { return response.json(); });
     };
     return DataService;

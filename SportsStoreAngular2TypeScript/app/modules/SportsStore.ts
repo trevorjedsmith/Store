@@ -17,15 +17,18 @@ import { Observable } from 'rxjs/Rx';
 export class SportsStore implements OnInit {
 
     products: any[] = [];
+    errorMessage: string;
+
 
     constructor(private _dataService: DataService, private _cart: Cart, private _route: ActivatedRoute) {
-        
+
+        this._dataService.getProducts().subscribe(
+            data => this.products = data,
+            error => this.errorMessage = <any>error);
     }
 
     ngOnInit() {
-        this._dataService.getProducts().subscribe((data) => {
-            this.products = data;
-        });
+        
     }
 
   

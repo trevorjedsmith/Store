@@ -15,7 +15,7 @@ var SportsStore_1 = require("./modules/SportsStore");
 var Checkout_1 = require("./modules/Checkout");
 var SportsStoreCategories_1 = require("./modules/SportsStoreCategories");
 var CartSummary_1 = require("./modules/CartSummary");
-var TestNgFeatureModule_1 = require("./modules/TestNgFeatureModule");
+var PlaceOrder_1 = require("./modules/PlaceOrder");
 // hack - make sure that jQuery plugins can find
 //        jquery reference
 //Angular module by @NgModule
@@ -26,7 +26,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, TestNgFeatureModule_1.TestNgFeatureModule, router_1.RouterModule.forRoot([
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot([
                 {
                     path: 'sportsstore/:id',
                     component: SportsStore_1.SportsStore
@@ -41,7 +41,7 @@ AppModule = __decorate([
                 },
                 {
                     path: 'placeorder',
-                    component: Checkout_1.Checkout //PlaceOrder
+                    component: PlaceOrder_1.PlaceOrder //PlaceOrder
                 },
                 {
                     path: '',
@@ -49,7 +49,7 @@ AppModule = __decorate([
                     pathMatch: 'full'
                 }
             ])],
-        declarations: [app_component_1.AppComponent, SportsStore_1.SportsStore, SportsStoreCategories_1.SportsStoreCategories, CartSummary_1.CartSummary, Checkout_1.Checkout],
+        declarations: [app_component_1.AppComponent, SportsStore_1.SportsStore, SportsStoreCategories_1.SportsStoreCategories, CartSummary_1.CartSummary, Checkout_1.Checkout, PlaceOrder_1.PlaceOrder],
         bootstrap: [app_component_1.AppComponent] //root component
     })
 ], AppModule);

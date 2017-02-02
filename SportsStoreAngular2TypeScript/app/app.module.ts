@@ -11,8 +11,9 @@ import { SportsStore } from './modules/SportsStore';
 import { Checkout } from './modules/Checkout';
 import { SportsStoreCategories } from './modules/SportsStoreCategories';
 import { CartSummary } from './modules/CartSummary';
+import { PlaceOrder } from './modules/PlaceOrder';
 
-import { TestNgFeatureModule } from './modules/TestNgFeatureModule';
+
 
 
 // hack - make sure that jQuery plugins can find
@@ -20,7 +21,7 @@ import { TestNgFeatureModule } from './modules/TestNgFeatureModule';
 
 //Angular module by @NgModule
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule, TestNgFeatureModule, RouterModule.forRoot([
+    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot([
         {
             path: 'sportsstore/:id',
             component: SportsStore
@@ -35,7 +36,7 @@ import { TestNgFeatureModule } from './modules/TestNgFeatureModule';
         },
         {
             path: 'placeorder',
-            component: Checkout//PlaceOrder
+            component: PlaceOrder//PlaceOrder
         },
         {
             path: '',
@@ -45,7 +46,7 @@ import { TestNgFeatureModule } from './modules/TestNgFeatureModule';
     
    
     ])],//external modules
-    declarations: [AppComponent, SportsStore, SportsStoreCategories, CartSummary, Checkout],//internal modules
+    declarations: [AppComponent, SportsStore, SportsStoreCategories, CartSummary, Checkout, PlaceOrder],//internal modules
     bootstrap: [AppComponent]//root component
 })
 export class AppModule { }

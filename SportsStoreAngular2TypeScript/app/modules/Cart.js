@@ -25,7 +25,7 @@ var Cart = (function () {
         }
         if (!addedToExistingItem) {
             this.cartData.push({
-                Count: 1, Id: id, Price: price, Name: name
+                Count: 1, ProductId: id, Price: price, Name: name
             });
         }
     };
@@ -36,6 +36,9 @@ var Cart = (function () {
                 break;
             }
         }
+    };
+    Cart.prototype.clearCart = function () {
+        this.cartData = [];
     };
     Cart.prototype.getProducts = function () {
         return this.cartData;

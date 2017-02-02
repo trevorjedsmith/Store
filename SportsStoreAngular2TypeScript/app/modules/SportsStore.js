@@ -14,16 +14,14 @@ var router_1 = require("@angular/router");
 var Cart_1 = require("./Cart");
 var SportsStore = (function () {
     function SportsStore(_dataService, _cart, _route) {
+        var _this = this;
         this._dataService = _dataService;
         this._cart = _cart;
         this._route = _route;
         this.products = [];
+        this._dataService.getProducts().subscribe(function (data) { return _this.products = data; }, function (error) { return _this.errorMessage = error; });
     }
     SportsStore.prototype.ngOnInit = function () {
-        var _this = this;
-        this._dataService.getProducts().subscribe(function (data) {
-            _this.products = data;
-        });
     };
     SportsStore.prototype.addProductToCart = function (product) {
         this._cart.addProduct(product.Id, product.Name, product.Price);

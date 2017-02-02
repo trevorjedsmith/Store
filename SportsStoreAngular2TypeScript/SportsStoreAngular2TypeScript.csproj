@@ -143,10 +143,39 @@
     <Content Include="app\views\cart-component.html" />
     <Content Include="app\views\cartsummary.html" />
     <Content Include="app\views\category-list-component.html" />
+    <Content Include="app\views\placeorder.html" />
     <Content Include="app\views\product-list-component.html" />
+    <Content Include="content\bootstrap.css" />
+    <Content Include="content\bootstrap.min.css" />
+    <Content Include="content\Site.css" />
+    <Content Include="content\toastr.css" />
+    <Content Include="content\toastr.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
+    <Content Include="content\toastr.scss" />
+    <Content Include="content\toastr.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery-1.6.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.3.js" />
+    <Content Include="Scripts\jquery-1.6.3.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -155,6 +184,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\OrdersController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
+    <Compile Include="Controllers\mvc\AdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,6 +200,13 @@
     <Content Include="tasks.json" />
     <Content Include="tslint.json" />
     <Content Include="package.json" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,6 +229,7 @@
     <TypeScriptCompile Include="app\modules\DataService.ts" />
     <TypeScriptCompile Include="app\modules\ICategory.ts" />
     <TypeScriptCompile Include="app\modules\IProduct.ts" />
+    <TypeScriptCompile Include="app\modules\PlaceOrder.ts" />
     <TypeScriptCompile Include="app\modules\SportsStore.ts" />
     <TypeScriptCompile Include="app\modules\SportsStoreCategories.ts" />
     <TypeScriptCompile Include="app\feature_modules\TestNgFeatureModule.ts" />

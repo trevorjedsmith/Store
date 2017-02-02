@@ -25,7 +25,7 @@ export class Cart {
         }
         if (!addedToExistingItem) {
             this.cartData.push({
-                Count:1,Id:id,Price:price,Name:name
+                Count: 1, ProductId: id, Price: price, Name: name
             });
 
         }
@@ -38,6 +38,10 @@ export class Cart {
                 break;
             }
         }
+    }
+
+    clearCart(): void {
+        this.cartData = [];
     }
 
 
