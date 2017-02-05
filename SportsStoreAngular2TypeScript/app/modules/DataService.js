@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 //import * as $ from 'jquery';
+var PROTOCOL = 'http';
+var PORT = '53377';
 var DataService = (function () {
     function DataService(_http) {
         this._http = _http;
         this._productsurl = 'http://localhost:53377/api/products';
         this._categoriesurl = 'http://localhost:53377/api/products/categories';
         this._ordersUrl = 'http://localhost:53377/api/orders';
+        this.baseUrl = PROTOCOL + "://" + location.hostname + ":" + PORT + "/";
     }
     DataService.prototype.getProducts = function () {
         return this._http.get(this._productsurl)

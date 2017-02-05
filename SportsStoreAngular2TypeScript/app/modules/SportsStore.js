@@ -9,19 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var DataService_1 = require("./DataService");
-var router_1 = require("@angular/router");
+var ProductRepository_1 = require("./ProductRepository");
 var Cart_1 = require("./Cart");
+var Logger_1 = require("./Logger");
 var SportsStore = (function () {
-    function SportsStore(_dataService, _cart, _route) {
-        var _this = this;
+    function SportsStore(_dataService, _cart, _logger) {
         this._dataService = _dataService;
         this._cart = _cart;
-        this._route = _route;
-        this.products = [];
-        this._dataService.getProducts().subscribe(function (data) { return _this.products = data; }, function (error) { return _this.errorMessage = error; });
+        this._logger = _logger;
+        this.selectedCategory = null;
+        this._logger.log('Loading The Store ECommerce Application', null, true);
+        this._logger.log('Received product data from server...', null, true);
+        this._logger.log('Received product categories from server...', null, true);
     }
-    SportsStore.prototype.ngOnInit = function () {
+    Object.defineProperty(SportsStore.prototype, "products", {
+        get: function () {
+            return this._dataService.getProducts(this.selectedCategory);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SportsStore.prototype, "categories", {
+        get: function () {
+            return this._dataService.getCategories();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    SportsStore.prototype.changeCategory = function (newCategory) {
+        this.selectedCategory = newCategory;
     };
     SportsStore.prototype.addProductToCart = function (product) {
         this._cart.addProduct(product.Id, product.Name, product.Price);
@@ -33,7 +49,7 @@ SportsStore = __decorate([
         selector: 'ss-products',
         templateUrl: 'app/views/product-list-component.html'
     }),
-    __metadata("design:paramtypes", [DataService_1.DataService, Cart_1.Cart, router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [ProductRepository_1.ProductRepository, Cart_1.Cart, Logger_1.Logger])
 ], SportsStore);
 exports.SportsStore = SportsStore;
 //# sourceMappingURL=SportsStore.js.map

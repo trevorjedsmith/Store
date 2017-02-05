@@ -1,11 +1,11 @@
-﻿import { Component , OnInit } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
 import { IProduct } from './IProduct';
-import { DataService } from './DataService';
-
-import { ActivatedRoute } from '@angular/router';
+import { ProductRepository } from './ProductRepository';
 
 import { Cart } from './Cart';
+
+import { Logger } from './Logger';
 
 import { Observable } from 'rxjs/Rx';
 
@@ -14,30 +14,32 @@ import { Observable } from 'rxjs/Rx';
     selector: 'ss-products',
     templateUrl: 'app/views/product-list-component.html'
 })
-export class SportsStore implements OnInit {
+export class SportsStore {
 
-    products: any[] = [];
     errorMessage: string;
+    public selectedCategory: string = null;
 
-
-    constructor(private _dataService: DataService, private _cart: Cart, private _route: ActivatedRoute) {
-
-        this._dataService.getProducts().subscribe(
-            data => this.products = data,
-            error => this.errorMessage = <any>error);
+    constructor(private _dataService: ProductRepository, private _cart: Cart, private _logger: Logger) {
+        this._logger.log('Loading The Store ECommerce Application', null, true);
+        this._logger.log('Received product data from server...', null, true);
+        this._logger.log('Received product categories from server...', null, true);
     }
 
-    ngOnInit() {
-        
+    get products(): IProduct[] {
+        return this._dataService.getProducts(this.selectedCategory);
+       
     }
 
-  
+    get categories(): string[] {
+        return this._dataService.getCategories();
+    }
 
+    changeCategory(newCategory?: string) {
+        this.selectedCategory = newCategory;
+    }
 
     addProductToCart(product: any) {
         this._cart.addProduct(product.Id, product.Name, product.Price);
     }
-
-
   
 }

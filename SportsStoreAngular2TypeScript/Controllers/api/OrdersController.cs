@@ -1,5 +1,6 @@
 ﻿using SportsStoreAngular2TypeScript.Data;
 using SportsStoreAngular2TypeScript.Models;
+using SportsStoreAngular2TypeScript.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SportsStoreAngular2TypeScript.Controllers.api
     {
         //Install DI container for this
         private OrderRepository repo { get; set; }
+        private EmailProcessor emailProcessor = new EmailProcessor();
 
         public OrdersController()
         {
@@ -40,8 +42,9 @@ namespace SportsStoreAngular2TypeScript.Controllers.api
             {
                 return BadRequest(ModelState);
             }
-
+            //if save(order) throws then an email won't be sent
             await repo.Save(order);
+            emailProcessor.ProcessOrder(order);
             return Ok(order.Id);
         }
 

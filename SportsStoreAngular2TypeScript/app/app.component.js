@@ -9,6 +9,8 @@ var core_1 = require("@angular/core");
 require("./rxjs-ops");
 var DataService_1 = require("./modules/DataService");
 var Cart_1 = require("./modules/Cart");
+var Logger_1 = require("./modules/Logger");
+var ProductRepository_1 = require("./modules/ProductRepository");
 var AppComponent = (function () {
     function AppComponent() {
         this.pageTitle = "The Store";
@@ -18,8 +20,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'pm-app',
-        template: "<div class=\"navbar navbar-default\">\n                <a class=\"navbar-brand\" [routerLink]=\"['/']\">\n                <span class=\"glyphicon glyphicon-qrcode\" aria-hidden=\"true\"></span>\n                {{pageTitle}}\n                </a>\n                <ss-cartsummary></ss-cartsummary>\n                </div>\n                <div class=\"panel panel-default row\">\n                <div class=\"col-xs-3\">\n                <ss-categories></ss-categories>\n                </div>\n                <div class=\"col-xs-8\">\n                <router-outlet></router-outlet>\n                </div>\n                </div>",
-        providers: [DataService_1.DataService, Cart_1.Cart]
+        template: "<div class=\"navbar navbar-default\">\n                <a class=\"navbar-brand\" [routerLink]=\"['/']\">\n                <span class=\"glyphicon glyphicon-qrcode\" aria-hidden=\"true\"></span>\n                {{pageTitle}}\n                </a>\n                <ss-cartsummary></ss-cartsummary>\n                </div>\n                <div class=\"panel panel-default row\">\n                <router-outlet></router-outlet>\n                </div>",
+        providers: [DataService_1.DataService, Cart_1.Cart, ProductRepository_1.ProductRepository, Logger_1.Logger]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

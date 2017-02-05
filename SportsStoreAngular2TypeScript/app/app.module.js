@@ -13,7 +13,6 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var SportsStore_1 = require("./modules/SportsStore");
 var Checkout_1 = require("./modules/Checkout");
-var SportsStoreCategories_1 = require("./modules/SportsStoreCategories");
 var CartSummary_1 = require("./modules/CartSummary");
 var PlaceOrder_1 = require("./modules/PlaceOrder");
 // hack - make sure that jQuery plugins can find
@@ -28,10 +27,6 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot([
                 {
-                    path: 'sportsstore/:id',
-                    component: SportsStore_1.SportsStore
-                },
-                {
                     path: 'sportsstore',
                     component: SportsStore_1.SportsStore //the component that the router should create 
                 },
@@ -45,11 +40,11 @@ AppModule = __decorate([
                 },
                 {
                     path: '',
-                    redirectTo: '/sportsstore',
+                    redirectTo: 'sportsstore',
                     pathMatch: 'full'
                 }
             ])],
-        declarations: [app_component_1.AppComponent, SportsStore_1.SportsStore, SportsStoreCategories_1.SportsStoreCategories, CartSummary_1.CartSummary, Checkout_1.Checkout, PlaceOrder_1.PlaceOrder],
+        declarations: [app_component_1.AppComponent, SportsStore_1.SportsStore, CartSummary_1.CartSummary, Checkout_1.Checkout, PlaceOrder_1.PlaceOrder],
         bootstrap: [app_component_1.AppComponent] //root component
     })
 ], AppModule);

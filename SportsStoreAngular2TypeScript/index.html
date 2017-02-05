@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="content/toastr.css" rel="stylesheet" />
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -22,10 +23,17 @@
       //this es module loader is looking for main.js set in systemjs
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/toastr.js"></script>
 </head>
 
 <body>
-    <pm-app>Loading app....</pm-app>
+    <pm-app>
+        Loading....
+        <div class="progress progress-striped active">
+            <div class="progress-bar" style="width: 100%"></div>
+        </div>
+    </pm-app>
 </body>
 
 </html>

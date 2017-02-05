@@ -3,6 +3,10 @@ import './rxjs-ops';
 import { DataService } from './modules/DataService';
 import { Cart } from './modules/Cart';
 
+import { Logger } from './modules/Logger';
+
+import { ProductRepository } from './modules/ProductRepository';
+
 @Component({
     selector: 'pm-app',
     template: `<div class="navbar navbar-default">
@@ -13,14 +17,9 @@ import { Cart } from './modules/Cart';
                 <ss-cartsummary></ss-cartsummary>
                 </div>
                 <div class="panel panel-default row">
-                <div class="col-xs-3">
-                <ss-categories></ss-categories>
-                </div>
-                <div class="col-xs-8">
                 <router-outlet></router-outlet>
-                </div>
                 </div>`,
-    providers:[DataService, Cart]
+    providers: [DataService, Cart, ProductRepository, Logger]
 
    
 })

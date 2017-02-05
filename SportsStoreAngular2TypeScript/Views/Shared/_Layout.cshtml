@@ -27,6 +27,10 @@
     </div>
 
     <div class="container body-content">
+        @if(TempData["Message"] != null)
+        {
+            <div class="alert alert-success">@TempData["Message"]</div>
+        }
         @RenderBody()
         <hr />
         <footer>

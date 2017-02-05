@@ -86,6 +86,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -103,6 +115,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -142,7 +158,6 @@
   <ItemGroup>
     <Content Include="app\views\cart-component.html" />
     <Content Include="app\views\cartsummary.html" />
-    <Content Include="app\views\category-list-component.html" />
     <Content Include="app\views\placeorder.html" />
     <Content Include="app\views\product-list-component.html" />
     <Content Include="content\bootstrap.css" />
@@ -159,7 +174,21 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="node_modules\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="node_modules\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -180,6 +209,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\OrdersController.cs" />
@@ -188,7 +218,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Interfaces\IOrderProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -207,6 +240,7 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -229,12 +263,14 @@
     <TypeScriptCompile Include="app\modules\DataService.ts" />
     <TypeScriptCompile Include="app\modules\ICategory.ts" />
     <TypeScriptCompile Include="app\modules\IProduct.ts" />
+    <TypeScriptCompile Include="app\modules\Logger.ts" />
     <TypeScriptCompile Include="app\modules\PlaceOrder.ts" />
+    <TypeScriptCompile Include="app\modules\ProductRepository.ts" />
     <TypeScriptCompile Include="app\modules\SportsStore.ts" />
-    <TypeScriptCompile Include="app\modules\SportsStoreCategories.ts" />
     <TypeScriptCompile Include="app\feature_modules\TestNgFeatureModule.ts" />
     <TypeScriptCompile Include="app\rjxs-operators.ts" />
     <TypeScriptCompile Include="app\rxjs-ops.ts" />
+    <TypeScriptCompile Include="typings\globals\toastr\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

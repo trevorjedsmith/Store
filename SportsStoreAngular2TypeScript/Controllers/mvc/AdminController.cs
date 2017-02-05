@@ -1,128 +1,86 @@
-﻿using System;
+﻿using SportsStoreAngular2TypeScript.Data;
+using SportsStoreAngular2TypeScript.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using SportsStoreAngular2TypeScript.Data;
-using SportsStoreAngular2TypeScript.Models;
 
 namespace SportsStoreAngular2TypeScript.Controllers.mvc
 {
     public class AdminController : Controller
     {
-        private DataContext db = new DataContext();
 
+        //Use Ninject for this
+        ProductRepository _repo = new ProductRepository();
         // GET: Admin
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(_repo.GetAll());
         }
-
-        // GET: Admin/Details/5
-        public ActionResult Details(int? id)
+        [HttpGet]
+        public ViewResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
+            Product product = _repo.GetAll().FirstOrDefault(x => x.Id == id);
             return View(product);
-        }
 
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            return View();
         }
-
-        // POST: Admin/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,Category")] Product product)
+        public async Task<ActionResult> Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
+                await _repo.Save(product);
+                TempData["Message"] = string.Format("{0} has been saved", product.Name);
                 return RedirectToAction("Index");
+            }else
+            {
+                return View(product);
             }
-
-            return View(product);
         }
 
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+        [HttpGet]
+        public ViewResult Create()
+        { 
+            return View(new Product());
 
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,Category")] Product product)
+        public async Task<ActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                await _repo.Save(product);
+                TempData["Message"] = string.Format("{0} has been created", product.Name);
                 return RedirectToAction("Index");
             }
+            else
+            {
+                return View(product);
+            }
+        }
+
+        [HttpGet]
+        public ViewResult Delete(int id)
+        {
+            Product product = _repo.GetAll().FirstOrDefault(x => x.Id == id);
             return View(product);
+
         }
 
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public async Task<ActionResult> Delete(int id,bool check)
         {
-            if (id == null)
+            Product product = _repo.GetAll().FirstOrDefault(x => x.Id == id);
+            if(product != null && check == true)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                await _repo.Delete(id);
+                TempData["Message"] = string.Format("{0} has been deleted", product.Name);
+                return RedirectToAction("Index");
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+            return View(product);           
         }
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
