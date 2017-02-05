@@ -19,5 +19,8 @@ namespace SportsStoreAngular2TypeScript.Models
         public decimal Price { get; set; }
         [Required]
         public string Category { get; set; }
+        //image uplodaing
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
     }
 }

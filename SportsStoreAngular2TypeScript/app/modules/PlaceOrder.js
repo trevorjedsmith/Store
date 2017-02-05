@@ -12,11 +12,13 @@ var core_1 = require("@angular/core");
 var DataService_1 = require("./DataService");
 var Cart_1 = require("./Cart");
 var router_1 = require("@angular/router");
+var Logger_1 = require("./Logger");
 var PlaceOrder = (function () {
-    function PlaceOrder(_cart, _dataService, router) {
+    function PlaceOrder(_cart, _dataService, router, _logger) {
         this._cart = _cart;
         this._dataService = _dataService;
         this.router = router;
+        this._logger = _logger;
         this.lines = [];
     }
     PlaceOrder.prototype.getFormData = function () {
@@ -24,6 +26,8 @@ var PlaceOrder = (function () {
     };
     PlaceOrder.prototype.onSubmit = function () {
         var _this = this;
+        this._logger.log('Creating your order please be patient..', null, true);
+        var self = this;
         var lines = this._cart.getProducts();
         //create shipping details object
         var order = {
@@ -36,12 +40,15 @@ var PlaceOrder = (function () {
             giftwrap: this.giftwrap,
             lines: lines
         };
+        this._logger.log('Sending email to customer and merchant', null, true);
         //posting order and subscibing to it's return for future toasts
         this._dataService.sendOrder(order).subscribe(function (data) {
-            console.log(data);
             //if success clear cart
             _this._cart.clearCart();
             _this.router.navigate(['sportsstore']);
+        }, function (error) {
+            //error
+            self._logger.logError(error, null, true);
         });
     };
     return PlaceOrder;
@@ -50,7 +57,7 @@ PlaceOrder = __decorate([
     core_1.Component({
         templateUrl: 'app/views/placeorder.html'
     }),
-    __metadata("design:paramtypes", [Cart_1.Cart, DataService_1.DataService, router_1.Router])
+    __metadata("design:paramtypes", [Cart_1.Cart, DataService_1.DataService, router_1.Router, Logger_1.Logger])
 ], PlaceOrder);
 exports.PlaceOrder = PlaceOrder;
 //# sourceMappingURL=PlaceOrder.js.map

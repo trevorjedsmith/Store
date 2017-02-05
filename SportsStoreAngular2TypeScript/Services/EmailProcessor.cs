@@ -7,6 +7,7 @@ using SportsStoreAngular2TypeScript.Models;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
+using SportsStoreAngular2TypeScript.Data;
 
 namespace SportsStoreAngular2TypeScript.Services
 {
@@ -14,6 +15,7 @@ namespace SportsStoreAngular2TypeScript.Services
     {
         //this should be in config file
         private EmailSettings emailSettings = new EmailSettings();
+        private ProductRepository _prodRep = new ProductRepository();
 
         public void ProcessOrder(Order order)
         {
@@ -33,10 +35,11 @@ namespace SportsStoreAngular2TypeScript.Services
                 .AppendLine("Items:");
                 foreach (var line in order.Lines)
                 {
-                    var subtotal = line.Product.Price * line.count;
+                    var product = _prodRep.GetProduct(line.productid);
+                    var subtotal = line.price * line.count;
                     body.AppendFormat("{0} x {1} (subtotal: {2:c}",
                     line.count,
-                    line.Product.Name,
+                    product != null ? product.Name : "ProductId: " + line.productid.ToString(),
                     subtotal);
                 }
                 body.AppendFormat("Total order value: {0:c}",

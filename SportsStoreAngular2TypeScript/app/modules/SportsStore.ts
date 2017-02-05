@@ -20,9 +20,7 @@ export class SportsStore {
     public selectedCategory: string = null;
 
     constructor(private _dataService: ProductRepository, private _cart: Cart, private _logger: Logger) {
-        this._logger.log('Loading The Store ECommerce Application', null, true);
-        this._logger.log('Received product data from server...', null, true);
-        this._logger.log('Received product categories from server...', null, true);
+        this._logger.log('Loading products for [The Store]', null, true);
     }
 
     get products(): IProduct[] {

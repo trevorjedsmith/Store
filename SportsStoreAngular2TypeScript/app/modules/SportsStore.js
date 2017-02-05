@@ -18,9 +18,7 @@ var SportsStore = (function () {
         this._cart = _cart;
         this._logger = _logger;
         this.selectedCategory = null;
-        this._logger.log('Loading The Store ECommerce Application', null, true);
-        this._logger.log('Received product data from server...', null, true);
-        this._logger.log('Received product categories from server...', null, true);
+        this._logger.log('Loading products for [The Store]', null, true);
     }
     Object.defineProperty(SportsStore.prototype, "products", {
         get: function () {

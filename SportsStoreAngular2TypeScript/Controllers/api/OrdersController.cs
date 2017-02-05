@@ -43,9 +43,17 @@ namespace SportsStoreAngular2TypeScript.Controllers.api
                 return BadRequest(ModelState);
             }
             //if save(order) throws then an email won't be sent
-            await repo.Save(order);
-            emailProcessor.ProcessOrder(order);
-            return Ok(order.Id);
+            try
+            {
+                await repo.Save(order);
+                emailProcessor.ProcessOrder(order);
+                return Ok(order.Id);
+            }
+            catch (Exception ex)
+            {
+                //Log here later on
+                return BadRequest(ex.ToString());
+            }
         }
 
         public async Task<IHttpActionResult> DeleteOrder(int id)

@@ -9,6 +9,8 @@ import { Cart } from './Cart';
 
 import { Router } from '@angular/router'
 
+import { Logger } from './Logger';
+
 
 
 @Component({
@@ -23,11 +25,11 @@ export class PlaceOrder {
     public zip: string;
     public country: string;
     public giftwrap: boolean;
-    public lines : any[] = [];
+    public lines: any[] = [];
 
     public email: string;
 
-    constructor(private _cart: Cart, private _dataService: DataService, private router: Router) {
+    constructor(private _cart: Cart, private _dataService: DataService, private router: Router,private _logger:Logger) {
 
     }
 
@@ -36,6 +38,8 @@ export class PlaceOrder {
     }
 
     onSubmit() {
+        this._logger.log('Creating your order please be patient..', null, true);
+        var self = this;
         let lines = this._cart.getProducts();
 
         //create shipping details object
@@ -49,12 +53,16 @@ export class PlaceOrder {
             giftwrap: this.giftwrap,
             lines:lines
         }
+        this._logger.log('Sending email to customer and merchant', null, true);
         //posting order and subscibing to it's return for future toasts
-        this._dataService.sendOrder(order).subscribe((data) => {
-            console.log(data);
-            //if success clear cart
-            this._cart.clearCart();
-            this.router.navigate(['sportsstore']);
-        });      
+        this._dataService.sendOrder(order).subscribe(
+            data => {
+                //if success clear cart
+                this._cart.clearCart();
+                this.router.navigate(['sportsstore']);
+            }, error=> {
+                //error
+                self._logger.logError(error, null, true);
+            });      
     }
 }

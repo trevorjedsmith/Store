@@ -16,6 +16,11 @@ namespace SportsStoreAngular2TypeScript.Data
             return context.Products;
         }
 
+        public Product GetProduct(int id)
+        {
+            return context.Products.Find(id);
+        }
+
         public async Task<int> Save(Product product)
         {
             if (product.Id == 0)
@@ -31,6 +36,8 @@ namespace SportsStoreAngular2TypeScript.Data
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
                     dbEntry.Category = product.Category;
+                    dbEntry.ImageData = product.ImageData;
+                    dbEntry.ImageMimeType = product.ImageMimeType;
                 }
             }
             return await context.SaveChangesAsync();
